@@ -16,8 +16,10 @@ eventually and until, and bounded past operators. It has no formula type, no sin
 operator and no unbounded until. A later stage adds a deep embedding of MFOTL that
 follows the Isabelle entry `MFOTL_Monitor`.
 
-The library is planned. Nothing is in it yet. The plan is in
-[docs/plan.md](docs/plan.md). The analysis of the time model in LeanAID is in
+Stage 1 is in `MetricTemporal/Tick/`: the tick core of the document repositories, and
+the general forms of their helpers (`Past.lean`, `Future.lean`, `Window.lean`).
+`MetricTemporal/Examples.lean` proves the helpers of the documents from the general
+forms. The plan is in [docs/plan.md](docs/plan.md). The analysis of the time model in LeanAID is in
 [docs/leanaid-time.md](docs/leanaid-time.md). The existing work in Isabelle and Lean
 is in [docs/related-work.md](docs/related-work.md).
 
@@ -28,3 +30,13 @@ is in [docs/related-work.md](docs/related-work.md).
 | `patients_facing_verif` | Tick traces, for medical device documents |
 | `iot_verif` | Tick traces, for IoT protocol documents and standards |
 | `LeanAID` | Timed runs, for the oref0 dosing algorithm and its replay logs |
+
+## Build
+
+```bash
+lake build
+```
+
+```bash
+lake env lean scripts/Axioms.lean
+```

@@ -1,0 +1,5 @@
+name = "MetricTemporal"
+defaultTargets = ["MetricTemporal"]
+
+[[lean_lib]]
+name = "MetricTemporal"
