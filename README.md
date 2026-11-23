@@ -28,13 +28,3 @@ is in [docs/related-work.md](docs/related-work.md).
 | `patients_facing_verif` | Tick traces, for medical device documents |
 | `iot_verif` | Tick traces, for IoT protocol documents and standards |
 | `LeanAID` | Timed runs, for the oref0 dosing algorithm and its replay logs |
-
-## Rules
-
-- Lean core only, for now. A dependency of the library becomes a dependency of each
-  user repository, and none of them uses Mathlib.
-- No `sorry`, no `admit`, no `axiom`.
-- The library does not know any device. A definition that names a pump, a protocol or
-  a message type belongs to the repository that uses the library.
-
-Research artifact.
