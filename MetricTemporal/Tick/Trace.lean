@@ -51,7 +51,7 @@ def eventuallyIn (a b : Nat) (φ : TProp σ) : TProp σ :=
   fun tr t => ∃ d, a ≤ d ∧ d ≤ b ∧ φ tr (t + d)
 
 /-- `φ U[a,b] ψ`: `ψ` holds between `a` and `b` ticks from now, and `φ` holds at every
-tick before that. -/
+tick from now until then, the tick of `ψ` excluded. -/
 def untilIn (a b : Nat) (φ ψ : TProp σ) : TProp σ :=
   fun tr t => ∃ d, a ≤ d ∧ d ≤ b ∧ ψ tr (t + d) ∧ ∀ e, e < d → φ tr (t + e)
 
