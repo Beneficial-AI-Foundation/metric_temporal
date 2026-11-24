@@ -22,6 +22,18 @@ open MetricTemporal
 #print axioms sumRange_zero
 #print axioms sumRange_le_mul
 
+-- Timed runs, moved from LeanAID
+#print axioms upTo_split
+#print axioms upTo_take
+#print axioms div_le_div_of_le
+#print axioms div_nonneg'
+#print axioms sumFrom_mono
+#print axioms sumFrom_const
+#print axioms sumFrom_nonneg
+#print axioms sumFrom_add
+#print axioms integral_le_const
+#print axioms integral_nonneg
+
 -- The instances
 #print axioms Examples.RegulatorInit.prevMode_eq
 #print axioms Examples.RegulatorInit.initFor_iff

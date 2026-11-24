@@ -19,7 +19,8 @@ follows the Isabelle entry `MFOTL_Monitor`.
 Stage 1 is in `MetricTemporal/Tick/`: the tick core of the document repositories, and
 the general forms of their helpers (`Past.lean`, `Future.lean`, `Window.lean`).
 `MetricTemporal/Examples.lean` proves the helpers of the documents from the general
-forms. The plan is in [docs/plan.md](docs/plan.md). The analysis of the time model in LeanAID is in
+forms. Stage 2 is in `MetricTemporal/Run/`: finite runs with `Int` timestamps, the state
+at a time, and the integral of a rate over `Rat`, from LeanAID. The plan is in [docs/plan.md](docs/plan.md). The analysis of the time model in LeanAID is in
 [docs/leanaid-time.md](docs/leanaid-time.md). The existing work in Isabelle and Lean
 is in [docs/related-work.md](docs/related-work.md).
 
