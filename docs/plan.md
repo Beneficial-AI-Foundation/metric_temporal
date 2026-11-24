@@ -141,8 +141,8 @@ no `sorry`, no `admit`, no `axiom`, and no Mathlib.
    - `untilIn_witness_unique` and `untilIn_at`. The witness of `untilIn` is not
      unique in general. It is unique if `ψ` excludes `φ` at each tick, as in
      `responds_at`, where `φ` is "no indication" and `ψ` gives one. `untilIn_at` is
-     the general form of `responds_at`: it gives the witness as the first tick at
-     which `φ` fails.
+     the general form of `responds_at`: it gives the witness as the first tick from
+     `t` on at which `φ` fails.
    - The observer lemma of section 2.2.
 4. Prove each instance of section 2.2 from the general form, in `Examples.lean`, as a
    check that the general form fits. Each instance is restated there with its device

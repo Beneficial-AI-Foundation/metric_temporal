@@ -40,7 +40,9 @@ def scan (a : α) (F : α → σ → α) (tr : Trace σ) : Nat → α
   | t + 1 => F (scan a F tr t) (tr t)
 
 /-- The state of the previous tick. Before tick 0 it is `init`. -/
-def prev (init : σ) (tr : Trace σ) : Nat → σ := scan init (fun _ s => s) tr
+def prev (init : σ) (tr : Trace σ) : Nat → σ
+  | 0 => init
+  | t + 1 => tr t
 
 /-- The value of `f` at the previous tick. Before tick 0 it is `init`. -/
 def prevOf (f : σ → α) (init : α) (tr : Trace σ) : Nat → α :=
