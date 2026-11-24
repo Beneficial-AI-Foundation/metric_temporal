@@ -216,7 +216,7 @@ The second order has fewer conflicts. The maintainer selects one.
    `Run ε` instead of `Run Event`. `Status` and `stateBefore` have no users in
    LeanAID. Leave them out until a finite run has a stated meaning (section 6, point 5).
    Tag the release `v0.2.0`, and push the tag.
-2. In LeanAID, add the library at `v0.2.0` to `lakefile.lean`, run `lake update MetricTemporal`,
+2. In LeanAID, add the library at `v0.2.0` to `lakefile.toml`, run `lake update MetricTemporal`,
    commit the new `lake-manifest.json`, delete the moved definitions from
    `Run.lean`, and let `Run.lean` define only the unit (`msPerHour`) and the
    specialized names. No theorem statement in LeanAID changes in this stage.

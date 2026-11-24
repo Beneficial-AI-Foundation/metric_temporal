@@ -64,7 +64,8 @@ Ticks before the start of the trace are skipped, so they count as held. -/
 def historicallyIn (a b : Nat) (φ : TProp σ) : TProp σ :=
   fun tr t => ∀ d, a ≤ d → d ≤ b → d ≤ t → φ tr (t - d)
 
-/-- Bounded response: each time `φ` holds, `ψ` holds at most `d` ticks later. -/
+/-- Bounded response: from now on, each time `φ` holds, `ψ` holds at the same tick or at
+most `d` ticks later. -/
 def leadsToWithin (d : Nat) (φ ψ : TProp σ) : TProp σ :=
   always (imp φ (eventuallyIn 0 d ψ))
 

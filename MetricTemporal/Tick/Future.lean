@@ -6,7 +6,8 @@ import MetricTemporal.Tick.Trace
 - `TProp.next φ`: `φ` holds at the next tick.
 - `TProp.untilIn_witness_unique`: if `ψ` excludes `φ` at each tick, then two witnesses
   of `φ U ψ` are equal. The witness of `untilIn` is not unique in general: if `φ` and
-  `ψ` both hold at ticks `t` and `t + 1`, then 0 and 1 are both witnesses.
+  `ψ` both hold at ticks `t` and `t + 1`, then 0 and 1 are both witnesses of
+  `untilIn 0 1 φ ψ` at `t`.
 - `TProp.untilIn_at`: if `φ U[a,b] ψ` holds at `t`, `ψ` excludes `φ`, and `φ` holds at
   each tick before `t + d` but not at `t + d`, then `t + d` is the witness, so `ψ`
   holds there and `d` is in the bounds.
