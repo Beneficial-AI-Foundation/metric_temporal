@@ -35,8 +35,9 @@ theorem untilIn_witness_unique (hx : ∀ u, ψ tr u → ¬ φ tr u) {d d' : Nat}
   · exact heq
   · exact absurd (h.2 d' hgt) (hx _ h'.1)
 
-/-- If `φ U[a,b] ψ` holds at `t` and `ψ` excludes `φ`, then the first tick at which `φ`
-fails is the witness: `ψ` holds there, and its distance from `t` is in `[a, b]`. -/
+/-- If `φ U[a,b] ψ` holds at `t` and `ψ` excludes `φ`, then the first tick from `t` on at
+which `φ` fails is the witness: `ψ` holds there, and its distance from `t` is in
+`[a, b]`. -/
 theorem untilIn_at {a b d : Nat} (hu : untilIn a b φ ψ tr t)
     (hx : ∀ u, ψ tr u → ¬ φ tr u) (hd : ¬ φ tr (t + d))
     (hb : ∀ e, e < d → φ tr (t + e)) : a ≤ d ∧ d ≤ b ∧ ψ tr (t + d) := by

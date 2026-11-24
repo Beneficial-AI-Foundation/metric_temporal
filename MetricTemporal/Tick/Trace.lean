@@ -60,7 +60,7 @@ def onceIn (a b : Nat) (φ : TProp σ) : TProp σ :=
   fun tr t => ∃ d, a ≤ d ∧ d ≤ b ∧ d ≤ t ∧ φ tr (t - d)
 
 /-- Past operator `H[a,b] φ`: `φ` held at every tick between `a` and `b` ticks ago.
-Ticks before the start of the trace do not count. -/
+Ticks before the start of the trace are skipped, so they count as held. -/
 def historicallyIn (a b : Nat) (φ : TProp σ) : TProp σ :=
   fun tr t => ∀ d, a ≤ d → d ≤ b → d ≤ t → φ tr (t - d)
 

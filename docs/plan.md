@@ -95,6 +95,7 @@ timestamped steps, the state at a time, and a window integral over `Rat`.
 MetricTemporal/Tick/Trace.lean      Trace, TProp, operators, lemmas (from DeviceDocs/Time)
 MetricTemporal/Tick/Machine.lean    Machine, before, after, trace, invariant
 MetricTemporal/Tick/Past.lean       prev, hold, heldFor, observer lemma
+MetricTemporal/Tick/Future.lean     next, the witness of untilIn
 MetricTemporal/Tick/Window.lean     window sums and their lemmas
 MetricTemporal/Run/Run.lean         Step, Run, Increasing, stateAt (from LeanAID)
 MetricTemporal/Run/Integral.lean    sumFrom, integral over Rat (from LeanAID)
