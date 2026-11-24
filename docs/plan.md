@@ -18,10 +18,9 @@ MFOTL that follows the Isabelle definitions (section 6), and the proved link bet
 the two models of time (section 7). [related-work.md](related-work.md) lists the
 existing work.
 
-The repository is in the GitHub organization `Beneficial-AI-Foundation`. It is private
-for now, because the plan describes the three user repositories, which are private.
-It becomes public when it has library code and the maintainer has reviewed what the
-documents say about the private repositories. Its name is `metric_temporal`, and the Lean library and the namespace are `MetricTemporal`.
+The repository is in the GitHub organization `Beneficial-AI-Foundation`, and it is
+public since 2026-11-23. The three user repositories stay private. Its name is
+`metric_temporal`, and the Lean library and the namespace are `MetricTemporal`.
 "Metric temporal" names the family of logics that contains MTL and MFOTL, so the name
 stays true from the first stage to the deep layer. It does not claim a complete
 library for either logic. The name does not use `Time` alone, because Lean core has
@@ -146,8 +145,8 @@ no `sorry`, no `admit`, no `axiom`, and no Mathlib.
    prints the axioms of the main theorems.
 6. Tag the first release `v0.1.0`, and push the tag to
    `Beneficial-AI-Foundation/metric_temporal`. Sections 4.2 and 4.3 fetch the library
-   from there. While the repository is private, the CI of each user repository needs
-   read access to it, for example a deploy key.
+   from there. The repository is public, so the CI of each user repository fetches it
+   with no keys.
 
 ### 4.2 `patients_facing_verif`
 
