@@ -1,6 +1,8 @@
 # Plan: factor the time code out into one library
 
-Status: plan. Nothing in this file is done. Written 2026-11-23.
+Status: written 2026-11-23. The library parts of stage 1 (section 4.1) and stage 2
+(section 5, point 1) are done, with tags `v0.1.0` and `v0.2.0`. Stages 3 and 4 are not
+started.
 
 ## 1. Goal
 
@@ -125,7 +127,8 @@ no `sorry`, no `admit`, no `axiom`, and no Mathlib.
    - `hold`, the last value of an optional field.
    - `heldFor φ n`: at tick `t`, `φ` held at each of the `n` ticks before `t`, and
      `n ≤ t`. `historicallyIn` does not give this, because it does not count ticks
-     before tick 0. At tick `t < n`, it checks only the ticks from 0 to `t`. The three
+     before tick 0. At tick `t < n`, `historicallyIn 1 n` checks only the ticks from 0 to
+     `t - 1`. The three
      instances count differently, and each is `heldFor` at a shifted tick:
      `initFor tr t n` excludes tick `t` and is `heldFor` at `t` with length `n`.
      `idleFor tr t n` includes tick `t` and is `heldFor` at `t + 1` with length
@@ -134,9 +137,11 @@ no `sorry`, no `admit`, no `axiom`, and no Mathlib.
      streak starts at tick 0.
    - `next φ`, "from the next tick".
    - `sumRange` and its lemmas, in `Window.lean`.
-   - `untilIn_witness_unique`, the general form of `responds_at`. The witness of
-     `untilIn` is not unique in general. It is unique if `ψ` excludes `φ` at each
-     tick, as in `responds_at`, where `φ` is "no indication" and `ψ` gives one.
+   - `untilIn_witness_unique` and `untilIn_at`. The witness of `untilIn` is not
+     unique in general. It is unique if `ψ` excludes `φ` at each tick, as in
+     `responds_at`, where `φ` is "no indication" and `ψ` gives one. `untilIn_at` is
+     the general form of `responds_at`: it gives the witness as the first tick at
+     which `φ` fails.
    - The observer lemma of section 2.2.
 4. Prove each instance of section 2.2 from the general form, in `Examples.lean`, as a
    check that the general form fits. Each instance is restated there with its device

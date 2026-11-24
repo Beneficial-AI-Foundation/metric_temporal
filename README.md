@@ -1,7 +1,7 @@
 # Metric temporal logics in Lean
 
-A Lean 4 library for timed properties of systems. It gives two models of time and the
-link between them:
+A Lean 4 library for timed properties of systems. It gives two models of time. A
+later stage links them (stage 4 in [docs/plan.md](docs/plan.md)).
 
 - Tick traces. A trace gives the observed state at each tick (`Nat → σ`). Timed
   properties use the bounded operators of metric temporal logic (MTL). This model is

@@ -5,8 +5,8 @@ A trace gives the observed state at each tick. A tick is the time resolution of 
 document under study, for example one thread period or one second. Each document
 states its tick length.
 
-The operators are the bounded operators of metric temporal logic (MTL) on discrete
-time. They are Lean functions, not a formula type, so a requirement can mix them with
+The operators are the unbounded `always` and `eventually`, and the bounded operators
+of metric temporal logic (MTL) on discrete time. They are Lean functions, not a formula type, so a requirement can mix them with
 any Lean predicate.
 -/
 

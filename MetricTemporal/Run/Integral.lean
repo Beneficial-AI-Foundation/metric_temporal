@@ -47,7 +47,8 @@ def sumFrom (f : Int → Rat) (a : Int) : Nat → Rat
   | n + 1 => sumFrom f a n + f (a + n)
 
 /-- The integral over `[a, a + n)` of a rate `f` that is constant on each time step, with
-    `scale` time steps in the unit of the rate: `Σ_{i<n} f (a + i) / scale`. -/
+    `scale` time steps in the unit of the rate: `Σ_{i<n} f (a + i) / scale`. The result
+    is an integral only for `0 < scale`. The lemmas on `integral` assume this. -/
 def integral (scale : Rat) (f : Int → Rat) (a : Int) (n : Nat) : Rat := sumFrom f a n / scale
 
 theorem sumFrom_mono {f g : Int → Rat} (a : Int) (h : ∀ k, a ≤ k → f k ≤ g k) :
