@@ -209,7 +209,7 @@ The second order has fewer conflicts. The maintainer selects one.
    `integral` and their lemmas. Make the time type a parameter or keep `Int`, and make
    `msPerHour` a parameter of `integral` with the hypothesis that it is positive (the
    unit belongs to LeanAID, and the bound and nonnegativity lemmas need the
-   hypothesis). Copy the `Rat` lemmas that the moved proofs use from
+   hypothesis). Move the `Rat` lemmas that the moved proofs use from
    `LeanAID/Proofs/Rounding.lean`: `div_le_div_of_le` and `div_nonneg'`, and the two
    lemmas that their proofs use, `div_le_iff_le_mul` and `le_div_iff_mul_le`.
    Also move `upTo_split` and `upTo_take` from `LeanAID/Time/Pump.lean`, stated for
@@ -219,7 +219,9 @@ The second order has fewer conflicts. The maintainer selects one.
 2. In LeanAID, add the library at `v0.2.0` to `lakefile.toml`, run `lake update MetricTemporal`,
    commit the new `lake-manifest.json`, delete the moved definitions from
    `Run.lean`, and let `Run.lean` define only the unit (`msPerHour`) and the
-   specialized names. No theorem statement in LeanAID changes in this stage.
+   specialized names. Delete the four `Rat` lemmas from `Rounding.lean`, and let it
+   export them from the library, so that LeanAID has no second copy. No theorem
+   statement in LeanAID changes in this stage.
 3. `lake build` in LeanAID must succeed, and the replay and conformance tests must give
    the same results.
 
