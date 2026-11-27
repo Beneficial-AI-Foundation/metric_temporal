@@ -5,8 +5,8 @@ A trace gives the observed state at each tick. A tick is the time resolution of 
 document under study, for example one thread period or one second. Each document
 states its tick length.
 
-The operators are the bounded operators of metric temporal logic (MTL) on discrete
-time. They are Lean functions, not a formula type, so a requirement can mix them with
+The operators are the unbounded `always` and `eventually`, and the bounded operators
+of metric temporal logic (MTL) on discrete time. They are Lean functions, not a formula type, so a requirement can mix them with
 any Lean predicate.
 -/
 
@@ -51,7 +51,7 @@ def eventuallyIn (a b : Nat) (φ : TProp σ) : TProp σ :=
   fun tr t => ∃ d, a ≤ d ∧ d ≤ b ∧ φ tr (t + d)
 
 /-- `φ U[a,b] ψ`: `ψ` holds between `a` and `b` ticks from now, and `φ` holds at every
-tick before that. -/
+tick from now until then, the tick of `ψ` excluded. -/
 def untilIn (a b : Nat) (φ ψ : TProp σ) : TProp σ :=
   fun tr t => ∃ d, a ≤ d ∧ d ≤ b ∧ ψ tr (t + d) ∧ ∀ e, e < d → φ tr (t + e)
 
@@ -60,11 +60,12 @@ def onceIn (a b : Nat) (φ : TProp σ) : TProp σ :=
   fun tr t => ∃ d, a ≤ d ∧ d ≤ b ∧ d ≤ t ∧ φ tr (t - d)
 
 /-- Past operator `H[a,b] φ`: `φ` held at every tick between `a` and `b` ticks ago.
-Ticks before the start of the trace do not count. -/
+Ticks before the start of the trace are skipped, so they count as held. -/
 def historicallyIn (a b : Nat) (φ : TProp σ) : TProp σ :=
   fun tr t => ∀ d, a ≤ d → d ≤ b → d ≤ t → φ tr (t - d)
 
-/-- Bounded response: each time `φ` holds, `ψ` holds at most `d` ticks later. -/
+/-- Bounded response: from now on, each time `φ` holds, `ψ` holds at the same tick or at
+most `d` ticks later. -/
 def leadsToWithin (d : Nat) (φ ψ : TProp σ) : TProp σ :=
   always (imp φ (eventuallyIn 0 d ψ))
 

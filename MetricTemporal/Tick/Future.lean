@@ -6,10 +6,11 @@ import MetricTemporal.Tick.Trace
 - `TProp.next φ`: `φ` holds at the next tick.
 - `TProp.untilIn_witness_unique`: if `ψ` excludes `φ` at each tick, then two witnesses
   of `φ U ψ` are equal. The witness of `untilIn` is not unique in general: if `φ` and
-  `ψ` both hold at ticks `t` and `t + 1`, then 0 and 1 are both witnesses.
-- `TProp.untilIn_at`: if `ψ` excludes `φ`, and `φ` holds at each tick before `t + d`
-  but not at `t + d`, then `t + d` is the witness, so `ψ` holds there and `d` is in
-  the bounds.
+  `ψ` both hold at ticks `t` and `t + 1`, then 0 and 1 are both witnesses of
+  `untilIn 0 1 φ ψ` at `t`.
+- `TProp.untilIn_at`: if `φ U[a,b] ψ` holds at `t`, `ψ` excludes `φ`, and `φ` holds at
+  each tick before `t + d` but not at `t + d`, then `t + d` is the witness, so `ψ`
+  holds there and `d` is in the bounds.
 -/
 
 namespace MetricTemporal
@@ -35,8 +36,9 @@ theorem untilIn_witness_unique (hx : ∀ u, ψ tr u → ¬ φ tr u) {d d' : Nat}
   · exact heq
   · exact absurd (h.2 d' hgt) (hx _ h'.1)
 
-/-- If `ψ` excludes `φ`, then the first tick at which `φ` fails is the witness of
-`φ U[a,b] ψ`. -/
+/-- If `φ U[a,b] ψ` holds at `t` and `ψ` excludes `φ`, then the first tick from `t` on at
+which `φ` fails is the witness: `ψ` holds there, and its distance from `t` is in
+`[a, b]`. -/
 theorem untilIn_at {a b d : Nat} (hu : untilIn a b φ ψ tr t)
     (hx : ∀ u, ψ tr u → ¬ φ tr u) (hd : ¬ φ tr (t + d))
     (hb : ∀ e, e < d → φ tr (t + e)) : a ≤ d ∧ d ≤ b ∧ ψ tr (t + d) := by
