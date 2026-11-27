@@ -41,3 +41,7 @@ lake build
 ```bash
 lake env lean scripts/Axioms.lean
 ```
+
+## License
+
+MIT. See [LICENSE](LICENSE).
